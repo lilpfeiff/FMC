@@ -1,0 +1,361 @@
+
+/*
+Filename: stylesHome.css
+Description: styling for home pages (customer and vendor)
+Author: Sajid Rahman & Loren Pfeiffer
+*/
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Nav */
+
+li, a, button{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+	  color: #E2DCC8;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+    background-color: #100F0F;
+}
+
+.logo{
+  cursor: pointer;
+  width: 70px;
+	height: 70px;
+	border-radius: 50%;
+}
+
+.navLinks{
+    list-style: none;
+}
+
+.navLinks li{
+    display: inline;
+    padding: 0px 20px;
+}
+
+.navLinks li a{
+    transform: all 0.3s ease 0s;
+}
+
+.navLinks li a:hover{
+    color: #0F3D3E;
+}
+
+button{
+    padding: 9px 25px;
+    background-color: #0F3D3E;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover{
+    background-color: #0F3D3E;
+    font-weight: bold;
+}
+
+/* Hero */
+
+#hero{
+    width: 100%;
+    height: 160vh;
+    background-color: #100F0F;
+    background-image: url('../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #E2DCC8;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.herocontainer{
+    width: 90%;
+    height: 100%;
+    max-width: 1220px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+}
+
+.herocontainer .info h1{
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #F1F1F1;
+    font-weight: bold;
+    max-width: 40%;
+}
+
+.herocontainer .info h2{
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 40%;
+}
+
+.herocontainer .info p{
+    font-size: 0.8rem;
+    max-width: 50%;
+    margin-bottom: 2rem;
+}
+
+.herocontainer .info a{
+    text-decoration: none;
+    display: inline-block;
+    background-color: #E2DCC8;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    margin-top: 2rem;
+    color: #100F0F;
+}
+
+/* Markets */
+
+.markets {
+    background-image: linear-gradient(to right bottom, #f1f1f1, #f6f3f5, #fdf4f4, #fff7f1, #fffbef);
+    padding: 30px;
+    align-items: center;
+    margin: 40px;
+    border-radius: 25px;
+}
+
+.markets h1{
+	font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 45px;
+    text-align: center;
+}
+
+.markets h4{
+    font-family: 'Handlee', cursive;
+    font-size: 40px;
+    margin: 15px;
+    text-align: center;
+    color: #0F3D3E;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #fffaf0, #fefbf1, #fdfdf2, #fcfef3, #fbfff4);
+}
+
+.markets p{
+	font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    margin: 15px;
+    text-align: center;
+}
+
+.markets img{
+    padding: 15px;
+    border-radius: 30px;
+    opacity: 0.9;
+    /* padding-bottom: 30px; */
+}
+
+.markets a{
+    padding: 15px;
+    font-size: 12px;
+    color: #0F3D3E;
+    padding: 0;
+}
+
+/* Events */
+
+.events {
+    background-image: linear-gradient(to right top, #f1f1f1, #f6f3f5, #fdf4f4, #fff7f1, #fffbef);
+    padding: 30px;
+    align-items: center;
+    margin: 40px;
+    border-radius: 25px;
+}
+
+.events h1{
+	font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 45px;
+    text-align: center;
+}
+
+.events h4{
+    font-family: 'Handlee', cursive;
+    font-size: 40px;
+    margin: 15px;
+    text-align: center;
+    padding: 30px;
+    color: #0F3D3E;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #fffaf0, #fefbf1, #fdfdf2, #fcfef3, #fbfff4);
+
+}
+
+.events p{
+	font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: #0F3D3E;
+    margin: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Contact Us */
+
+.contact-us{
+    background-image: linear-gradient(to bottom, #f1f1f1, #f6f3f5, #fdf4f4, #fff7f1, #fffbef);
+    padding: 30px;
+    align-items: center;
+    margin: 40px;
+    border-radius: 25px;
+}
+
+.contact-us h1{
+	font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 45px;
+    text-align: center;
+}
+
+/*form {
+   max-width: 800px;
+   text-align: center;
+   margin: 20px auto
+}
+
+form input, textarea {
+    border: 0; outline:0;
+    padding: 1em;
+    border-radius:8px;
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+    font-family: 'Quicksand', sans-serif;
+    resize: none;
+}*/
+
+#input-submit {
+    color: #E2DCC8;
+    background: #0F3D3E;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#input-submit:hover {
+    font-weight: bold;
+}
+
+.contactform-left {
+  float: left;
+  width: 48%;
+  margin-bottom: 1em;
+}
+
+.contactform-right {
+    float: right;
+    width: 50%; }
+
+.contactform-left {
+     margin-right: 2%;
+}
+
+/* Footer */
+
+.bg-footer{
+  align-items: center;
+  padding: 15px;
+  padding-left: 55px;
+  background-color: #100F0F;
+	font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #E2DCC8;
+}
+
+/* VendorFollowerView , CustomerSubscriptionsView, CustomerVendorView, CustomerProductView*/
+
+.background-image-follower{
+  background-color: #100F0F;
+  background-image: url(../images/img111.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: whitesmoke;
+  height: auto;
+  min-height: 100vh;
+}
+
+.background-image-follower h1{
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 50px;
+	font-weight: bold;
+	color: #F1F1F1;
+  background-color: #100f0f81;
+  padding: 10px;
+}
+
+.background-image-follower h3{
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	color: #E2DCC8;
+    background-color: #100f0f81;
+    padding: 10px;
+}
+
+.followercontainer{
+  padding: 20px;
+  background-color: #100f0f95;
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Quicksand' sans-serif;
+  color: #E2DCC8;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  align-items: center;
+  margin-left: 500px;
+  display: inline-block;
+}
+
+.vendorcontainer{
+    padding: 20px;
+    background-color: #100f0f95;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Quicksand' sans-serif;
+    color: #E2DCC8;
+    border-radius: 5px;
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+    display: inline-block;
+}
+
+.containersub{
+    display: inline-block;
+    left: 500px;;
+}
+
+.welcome-p{
+  font-size: 46px;
+}

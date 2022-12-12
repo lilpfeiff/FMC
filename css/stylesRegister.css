@@ -1,0 +1,116 @@
+/*
+Filename: stylesRegister.css
+Description: styling for register pages (customer and vendor)
+Author: Sajid Rahman
+*/
+
+/* Global */
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: system-ui;
+}
+
+.background-image-register{
+	background-color: #100F0F;
+	background-image: url(../images/img20.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: whitesmoke;
+	height: 100vh;
+}
+
+.background-image-register h1{
+	padding-top: 10px;
+		text-align: center;
+		font-family: 'Quicksand', sans-serif;
+		font-size: 50px;
+		font-weight: bold;
+		color: #F1F1F1;
+}
+
+.avatar{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -60px;
+	left: calc(50% - 50px);
+}
+
+.register{
+	width: 390px;
+	height: 565px;
+	top: 140px;
+	left: 568px;
+	background: #100F0F;
+	color: #fff;
+	padding: 5px;
+	border-radius: 3%;
+	position: absolute;
+	/* transform: transate(-50%, -50%); */
+	box-sizing: border-box;
+	box-shadow: whitesmoke;
+	align-items: center;
+	opacity: 0.9;
+}
+
+/* .register label{
+	width: 50px;
+} */
+
+.register h2{
+	margin-top: 60px;
+	margin-bottom: 15px;
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 22px;
+	color: white;
+}
+
+.register label{
+	display: inline-block;
+	width: 170px;
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.register input{
+	margin-bottom: 5px;
+}
+
+.register input[type="text"], input[type="password"]{
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #f1f1f14d;
+	background: transparent;
+	height: 35px;
+	color: #F1F1F1;
+	font-size: 16px;
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+	/* padding-right: 20px; */
+}
+
+.register button{
+	border: none;
+	outline: none;
+	margin-top: 25px;;
+	width: 100%;
+	height: 40px;
+	background: #0F3D3E;
+	color: #fff;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+	border-radius: 5px;
+	opacity: 0.9;
+	text-align: center;
+}
+
+.register button:hover{
+	font-weight: bold;
+	opacity: 1;
+}

@@ -1,0 +1,72 @@
+/*
+
+Filename: stylesCustomer.css
+Description: styling for Customer pages (outside of home and login)
+Author: Loren Pfeiffer & Sajid Rahman
+
+*/
+.pageTitle {
+  text-align:center;
+  font-family: 'Quicksand', sans-serif;
+}
+.prod-tbl:nth-child(even) {
+  background-color: rgba(245, 245, 245);
+}
+
+.prod-tbl{
+  border: 0px;
+  border-collapse: collapse;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.product-name-customer a {
+  text-align: center;
+  color: black;
+}
+
+.customer-product-categories {
+  width: 100%;
+}
+
+.customer-product-category-img {
+  width: 150px;
+}
+
+/* Product Pages Table Formatting */
+.empty-cell {
+  width: 30px;
+}
+
+.product-img {
+  width: 400px;
+  padding-top: 10px;
+}
+
+.padding-cell {
+  width: 15px;
+  margin-right: 55px;
+}
+
+.product-name, .product-vendor {
+  width: 175px;
+}
+
+.price-cell, .product-quantity {
+  width: 75px;
+}
+
+.btn-cell {
+  width: 135px;
+}
+
+.quantity-cell {
+  text-align: right;
+  margin-left: 15px;
+  padding-left: 20px;
+}
+
+#customer-vendor-body {
+  background-color: black;
+}
