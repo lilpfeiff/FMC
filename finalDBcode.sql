@@ -10,7 +10,29 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for fmc
+DROP DATABASE IF EXISTS `fmc`;
+CREATE DATABASE IF NOT EXISTS `fmc` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `fmc`;
+
+-- Dumping structure for table fmc.admin
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `AdminID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `PW` varchar(30) NOT NULL,
+  `FirstName` varchar(30) NOT NULL,
+  `LastName` varchar(30) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `PhoneNumber` char(10) DEFAULT NULL,
+  `WorkingHours` int(3) DEFAULT NULL,
+  PRIMARY KEY (`AdminID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3006 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.admin: 5 rows
+DELETE FROM `admin`;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`AdminID`, `Username`, `Email`, `PW`, `FirstName`, `LastName`, `Address`, `PhoneNumber`, `WorkingHours`) VALUES
 	(3001, 'Madmin', 'Margaret.T05@gmail.com', 'Margt@05', 'Margaret', 'Thames', '9819 Hillcrest Drive, Arlington, VA 93718', '2411552251', 6),
@@ -20,14 +42,39 @@ INSERT INTO `admin` (`AdminID`, `Username`, `Email`, `PW`, `FirstName`, `LastNam
 	(3005, 'Carrotcake74', 'Carol.1985@gmail.com', 'Car85', 'Carol', 'Watkins', '6221 Greengrove Street, Arlington, VA 22014', '2411999840', 4);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.adminreport
+DROP TABLE IF EXISTS `adminreport`;
+CREATE TABLE IF NOT EXISTS `adminreport` (
+  `AdReportID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `ReportID` bigint(30) NOT NULL,
+  `ReportType` varchar(30) NOT NULL,
+  `MarketInfo` varchar(1000) NOT NULL,
+  `VendorInfo` varchar(1000) NOT NULL,
+  `AdminID` bigint(30) NOT NULL,
+  PRIMARY KEY (`AdReportID`),
+  KEY `AdminReport_FK1` (`ReportID`),
+  KEY `AdminID_FK2` (`AdminID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.adminreport: 2 rows
+DELETE FROM `adminreport`;
 /*!40000 ALTER TABLE `adminreport` DISABLE KEYS */;
 INSERT INTO `adminreport` (`AdReportID`, `ReportID`, `ReportType`, `MarketInfo`, `VendorInfo`, `AdminID`) VALUES
 	(1, 6004, 'Admin', 'MI-100300', 'VI-200120', 3001),
 	(2, 6005, 'Admin', 'MI-100301', 'VI-200120', 3001);
 /*!40000 ALTER TABLE `adminreport` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.category
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `CategoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `CategoryName` text NOT NULL,
+  `CategoryImage` text,
+  PRIMARY KEY (`CategoryID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3015 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.category: 8 rows
+DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` (`CategoryID`, `CategoryName`, `CategoryImage`) VALUES
 	(3001, 'Alcohol', 'alcohol'),
@@ -40,7 +87,24 @@ INSERT INTO `category` (`CategoryID`, `CategoryName`, `CategoryImage`) VALUES
 	(3008, 'Produce', 'produce');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
--- Dumping data for table fmc.customer: 10 rows
+-- Dumping structure for table fmc.customer
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
+  `CustomerID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `PW` varchar(30) NOT NULL,
+  `FirstName` varchar(30) NOT NULL,
+  `LastName` varchar(30) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `DOB` date NOT NULL,
+  `VendorID` bigint(30) DEFAULT NULL,
+  PRIMARY KEY (`CustomerID`),
+  KEY `Customer_FK1` (`VendorID`)
+) ENGINE=MyISAM AUTO_INCREMENT=1012 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table fmc.customer: 11 rows
+DELETE FROM `customer`;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 INSERT INTO `customer` (`CustomerID`, `Username`, `Email`, `PW`, `FirstName`, `LastName`, `Address`, `DOB`, `VendorID`) VALUES
 	(1001, 'LD17', 'Ldiaz17@gmail.com', 'Deeazz@1717', 'Luis', 'Diaz', '8121 Merseyside Blvd, Fairfax, VA 22044', '1995-08-01', NULL),
@@ -56,7 +120,15 @@ INSERT INTO `customer` (`CustomerID`, `Username`, `Email`, `PW`, `FirstName`, `L
 	(1011, 'SuzyQ', 'suzy@gmail.com', 'Suz@Q', 'Suzy', 'Little', '4235 Flower Lane, Alexandria VA, 23425', '0000-00-00', NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 
--- Dumping data for table fmc.follower: 13 rows
+-- Dumping structure for table fmc.follower
+DROP TABLE IF EXISTS `follower`;
+CREATE TABLE IF NOT EXISTS `follower` (
+  `CustomerID` bigint(20) NOT NULL,
+  `VendorID` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Dumping data for table fmc.follower: 18 rows
+DELETE FROM `follower`;
 /*!40000 ALTER TABLE `follower` DISABLE KEYS */;
 INSERT INTO `follower` (`CustomerID`, `VendorID`) VALUES
 	(1011, 2001),
@@ -65,15 +137,38 @@ INSERT INTO `follower` (`CustomerID`, `VendorID`) VALUES
 	(1001, 2001),
 	(1001, 2002),
 	(1010, 2001),
+	(0, 2002),
+	(0, 2002),
+	(0, 2002),
 	(1010, 2011),
 	(1009, 2011),
 	(1010, 2003),
 	(1008, 2011),
+	(0, 2002),
+	(0, 2002),
+	(0, 2002),
 	(1010, 2002),
 	(1010, 2012);
 /*!40000 ALTER TABLE `follower` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.market
+DROP TABLE IF EXISTS `market`;
+CREATE TABLE IF NOT EXISTS `market` (
+  `MarketID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `MarketName` varchar(30) NOT NULL,
+  `MarketAddress` varchar(100) NOT NULL,
+  `MarketEvents` varchar(1000) NOT NULL,
+  `MarketDate` date NOT NULL,
+  `MarketStart` time NOT NULL,
+  `MarketEnd` time NOT NULL,
+  `AdminID` bigint(30) NOT NULL,
+  PRIMARY KEY (`MarketID`),
+  KEY `AdminID_FK1` (`AdminID`),
+  KEY `mkt_add` (`MarketAddress`)
+) ENGINE=MyISAM AUTO_INCREMENT=4006 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.market: 5 rows
+DELETE FROM `market`;
 /*!40000 ALTER TABLE `market` DISABLE KEYS */;
 INSERT INTO `market` (`MarketID`, `MarketName`, `MarketAddress`, `MarketEvents`, `MarketDate`, `MarketStart`, `MarketEnd`, `AdminID`) VALUES
 	(4001, 'Dupont Circle', '1600 20th St NW, Washington, DC 20009', 'Pie Eating Contest', '2022-12-03', '08:00:00', '12:00:00', 3001),
@@ -83,7 +178,24 @@ INSERT INTO `market` (`MarketID`, `MarketName`, `MarketAddress`, `MarketEvents`,
 	(4005, 'Dupont Circle', '1600 20th St NW, Washington, DC 20009', 'N/A', '2022-12-17', '08:00:00', '12:00:00', 3002);
 /*!40000 ALTER TABLE `market` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.marketschedule
+DROP TABLE IF EXISTS `marketschedule`;
+CREATE TABLE IF NOT EXISTS `marketschedule` (
+  `MarketSchedID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `MarketID` bigint(30) NOT NULL,
+  `MarketAddress` varchar(100) NOT NULL,
+  `MarketDirection` varchar(1000) NOT NULL,
+  `MarketDate` date NOT NULL,
+  `MarketStart` time NOT NULL,
+  `MarketEnd` time NOT NULL,
+  `VendorID` bigint(30) NOT NULL,
+  PRIMARY KEY (`MarketSchedID`),
+  KEY `Market_FK1` (`MarketID`),
+  KEY `Market_FK2` (`VendorID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.marketschedule: 5 rows
+DELETE FROM `marketschedule`;
 /*!40000 ALTER TABLE `marketschedule` DISABLE KEYS */;
 INSERT INTO `marketschedule` (`MarketSchedID`, `MarketID`, `MarketAddress`, `MarketDirection`, `MarketDate`, `MarketStart`, `MarketEnd`, `VendorID`) VALUES
 	(1, 4001, '1600 20th St NW, Washington, DC 20009', 'Enter through Q Street', '2022-12-03', '08:00:00', '12:00:00', 2001),
@@ -93,7 +205,24 @@ INSERT INTO `marketschedule` (`MarketSchedID`, `MarketID`, `MarketAddress`, `Mar
 	(5, 4005, '1600 20th St NW, Washington, DC 20009', 'Enter through Q Street', '2022-12-17', '08:00:00', '12:00:00', 2003);
 /*!40000 ALTER TABLE `marketschedule` ENABLE KEYS */;
 
--- Dumping data for table fmc.product: 18 rows
+-- Dumping structure for table fmc.product
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `ProductID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `ProductName` varchar(30) NOT NULL,
+  `ProductDescription` varchar(1000) NOT NULL,
+  `ProductImage` varchar(50) NOT NULL,
+  `ProductQuantity` varchar(30) NOT NULL,
+  `ProductPrice` float NOT NULL,
+  `VendorID` bigint(30) NOT NULL,
+  `CategoryID` varchar(1000) NOT NULL,
+  PRIMARY KEY (`ProductID`),
+  KEY `VendorID_FK1` (`VendorID`),
+  KEY `CategoryID_FK2` (`CategoryID`)
+) ENGINE=MyISAM AUTO_INCREMENT=5027 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table fmc.product: 19 rows
+DELETE FROM `product`;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`ProductID`, `ProductName`, `ProductDescription`, `ProductImage`, `ProductQuantity`, `ProductPrice`, `VendorID`, `CategoryID`) VALUES
 	(5001, 'Apples', 'Farm-fresh Honeycrisp apples. Crispy and delicious!', 'honeycrispApple', '100 pieces', 1, 2003, '3008'),
@@ -117,7 +246,16 @@ INSERT INTO `product` (`ProductID`, `ProductName`, `ProductDescription`, `Produc
 	(5025, 'Pumpkin', 'pumpkinszszsz', 'pumpkin', 'Low Stock', 5.46, 2011, '3008');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.report
+DROP TABLE IF EXISTS `report`;
+CREATE TABLE IF NOT EXISTS `report` (
+  `ReportID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `ReportDate` date NOT NULL,
+  PRIMARY KEY (`ReportID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6006 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.report: 5 rows
+DELETE FROM `report`;
 /*!40000 ALTER TABLE `report` DISABLE KEYS */;
 INSERT INTO `report` (`ReportID`, `ReportDate`) VALUES
 	(6001, '2022-11-29'),
@@ -127,7 +265,22 @@ INSERT INTO `report` (`ReportID`, `ReportDate`) VALUES
 	(6005, '2022-12-08');
 /*!40000 ALTER TABLE `report` ENABLE KEYS */;
 
--- Dumping data for table fmc.vendor: 13 rows
+-- Dumping structure for table fmc.vendor
+DROP TABLE IF EXISTS `vendor`;
+CREATE TABLE IF NOT EXISTS `vendor` (
+  `VendorID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `PW` varchar(30) NOT NULL,
+  `FirstName` varchar(30) NOT NULL,
+  `LastName` varchar(30) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `WorkingLocations` varchar(100) NOT NULL,
+  PRIMARY KEY (`VendorID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2015 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table fmc.vendor: 14 rows
+DELETE FROM `vendor`;
 /*!40000 ALTER TABLE `vendor` DISABLE KEYS */;
 INSERT INTO `vendor` (`VendorID`, `Username`, `Email`, `PW`, `FirstName`, `LastName`, `Address`, `WorkingLocations`) VALUES
 	(2001, 'MKFarms', 'MK.Farms71@gmail.com', 'MK@71', 'Michael', 'Keeves', '10 Bel Air, Hyattsville MD 20782', 'Columbia Heights Farmers Market'),
@@ -146,7 +299,23 @@ INSERT INTO `vendor` (`VendorID`, `Username`, `Email`, `PW`, `FirstName`, `LastN
 	(2014, 'henry3', 'henry@gmail.com', 'frazzled', 'Henry', 'Frazz', '7876 Hatzel Drive, Arlington, VA, 34123', 'Columbia Heights Farmers Market');
 /*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
 
+-- Dumping structure for table fmc.vendorreport
+DROP TABLE IF EXISTS `vendorreport`;
+CREATE TABLE IF NOT EXISTS `vendorreport` (
+  `VenReportID` bigint(30) NOT NULL AUTO_INCREMENT,
+  `ReportID` bigint(30) NOT NULL,
+  `ReportType` varchar(30) NOT NULL,
+  `SalesInfo` varchar(1000) NOT NULL,
+  `InventoryInfo` varchar(1000) NOT NULL,
+  `CustomerInfo` varchar(1000) NOT NULL,
+  `VendorID` bigint(30) NOT NULL,
+  PRIMARY KEY (`VenReportID`),
+  KEY `VendorReport_FK1` (`ReportID`),
+  KEY `VendorID_FK2` (`VendorID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table fmc.vendorreport: 3 rows
+DELETE FROM `vendorreport`;
 /*!40000 ALTER TABLE `vendorreport` DISABLE KEYS */;
 INSERT INTO `vendorreport` (`VenReportID`, `ReportID`, `ReportType`, `SalesInfo`, `InventoryInfo`, `CustomerInfo`, `VendorID`) VALUES
 	(1, 6001, 'Vendor', 'Receipt# SI-100410', 'II-200630', 'FI-11202020', 2001),
